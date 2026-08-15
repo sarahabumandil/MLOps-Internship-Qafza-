@@ -6,6 +6,48 @@
 
 ---
 
+## 0. MLOps Cycle Overview
+
+### Core MLOps Cycle for AI Projects
+
+![MLOps Cycle](pic/eaa88b14053db9c61e6c18b5a96070e7_3864329049827977324.webp)
+
+*The fundamental MLOps cycle encompasses Data Versioning, Experiment Tracking, Model Optimization, Monitoring & Feedback, CI/CD, and Model Packaging & Deployment.*
+
+### MLOps: The Intersection
+
+![MLOps Venn Diagram](pic/05c103fc38ab58de71dab95fabaa7352_8195359722652049789.webp)
+
+*MLOps sits at the intersection of Machine Learning, DevOps, and Data Engineering.*
+
+### MLOps = ML + DEV + OPS
+
+![MLOps Equation](pic/58c146d311d0b49ba91dc736472c6b5d_4956601368680360281.webp)
+
+### DevOps vs ML/Ops
+
+![DevOps ML Ops](pic/5a4e64a8fe042a0ba1f967cc07febdd5_1932436657853284982.webp)
+
+### Evolution of MLOps
+
+![Evolution Data Code Time](pic/ad228763f1d0201b6d159e4713375f1a_1382595586721618603.webp)
+
+*The evolution of MLOps across Data, Code, and Time dimensions.*
+
+### Detailed MLOps Cycle (Databricks View)
+
+![MLOps Cycle Databricks](pic/8cc439c50bca5aa34b6feef36a6a79a5_2251950054312224129.webp)
+
+*Comprehensive MLOps cycle including Data Prep, EDA, Develop, Review, Deploy, Monitor, and (Re-)Train phases.*
+
+### Complete MLOps Architecture
+
+![MLOps Architecture](pic/63d4cd232aa63dc67253fd2e1a3d187e_5175043643624730176.webp)
+
+*End-to-end MLOps architecture covering Data Analysis, Feature Store, Automated Pipelines, CI/CD, Model Serving, and Performance Monitoring.*
+
+---
+
 ## 1. Syllabus & Roadmap Overview
 
 This repository document serves as a comprehensive engineering log and reference artifact for the 12-week intensive MLOps curriculum. The program covers the complete lifecycle of production machine learning, moving from statistical pipelines to containerization, distributed orchestration, monitoring, and infrastructure management.
@@ -77,4 +119,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
