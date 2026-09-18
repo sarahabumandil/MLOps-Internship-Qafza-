@@ -1,0 +1,56 @@
+# Image credits
+
+Most diagrams and every chart in this course were made for it. The diagrams below come from
+the official documentation of the tools being taught, and are reused here under their licences.
+Each one also carries its source and licence on the slide it appears on.
+
+| Image | Used in | Source | Licence |
+|---|---|---|---|
+| Docker architecture — client, daemon, registry | `04-docker` | [docs.docker.com/get-started/docker-overview](https://docs.docker.com/get-started/docker-overview/) | Apache 2.0 — © Docker, Inc. |
+| MLflow tracking setups — local, local + database, remote server | `06-mlflow` | [mlflow.org/docs/latest/self-hosting/architecture/overview](https://mlflow.org/docs/latest/self-hosting/architecture/overview/) | Apache 2.0 |
+| DVC flow — workspace, cache, remote, and the git pointer | `07-dvc` | [dvc.org](https://dvc.org) | Apache 2.0 — © Iterative, Inc. |
+| Container vs virtual machine (cropped to the two panels that compare) | `04-docker` | [kubernetes.io/docs/concepts/overview](https://kubernetes.io/docs/concepts/overview/) | CC BY 4.0 |
+| Prometheus architecture — pull, store, query, alert | `10-monitoring` | [prometheus.io/docs/introduction/overview](https://prometheus.io/docs/introduction/overview/) | Apache 2.0 |
+| Feast architecture — sources, store, online and offline serving | `09-feature-management` | [feast.dev](https://docs.feast.dev/) | Apache 2.0 |
+| Image layers — the stack, and layer reuse across images | `04-docker` | [docs.docker.com/get-started/docker-concepts/building-images](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/) | Apache 2.0 — © Docker, Inc. |
+| Map of Ray — Cloud, Ray Core, Ray AI Libraries | `08-distributed-ml` | [docs.ray.io/en/latest/ray-overview](https://docs.ray.io/en/latest/ray-overview/index.html) | Apache 2.0 — © The Ray Team |
+| Ray cluster — a head node holding your code, and worker nodes (cropped to the cluster) | `08-distributed-ml` | [docs.ray.io/en/latest/cluster/kubernetes/user-guides/storage](https://docs.ray.io/en/latest/cluster/kubernetes/user-guides/storage.html) | Apache 2.0 — © The Ray Team |
+| `ray.get` in a loop against one batched `ray.get` | `08-distributed-ml` | [docs.ray.io/en/latest/ray-core/patterns/ray-get-loop](https://docs.ray.io/en/latest/ray-core/patterns/ray-get-loop.html) | Apache 2.0 — © The Ray Team |
+| Ray Train overview — Trainer, scaling config, workers | `08-distributed-ml` | [docs.ray.io/en/latest/train/overview](https://docs.ray.io/en/latest/train/overview.html) | Apache 2.0 — © The Ray Team |
+| The parts of an HTTP request, and of a response | `03-production-api` | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) | CC BY-SA 2.5 — © Mozilla contributors |
+
+Most are used unmodified; the Kubernetes one is cropped to two panels and Docker's layer
+diagrams are trimmed of their white margins to its two right-hand panels, as its
+licence permits with attribution. All are embedded rather than linked, so the decks keep working with no
+network. Terraform's diagrams were deliberately left out: HashiCorp's licensing changed and I
+could not establish a clean reuse licence for them.
+
+Everything else — the charts, the flow diagrams, the screenshots of MLflow's UI, Grafana and
+FastAPI's `/docs` — was produced by running the notebooks in this repository.
+
+## Reused with attribution, at the repository owner's request
+
+These three were chosen by the repository owner and are embedded in the decks with a source line
+directly beneath each one. They are commercial, all-rights-reserved work — they are **not** covered
+by the open licences above, and anyone reusing this material elsewhere should check with the
+authors first.
+
+| Diagram | Author | Where it appears |
+|---|---|---|
+| [Virtual Machine vs. Docker](https://www.opc-router.com/what-is-docker/) | OPC Router (inray Industriesoftware) | `04-docker` — "Same comparison, with the numbers on it" |
+| [REST vs GraphQL](https://bytebytego.com/guides/rest-api-vs-graphql/) | ByteByteGo | `03-production-api` — "The same comparison, in full" |
+| [Top 6 API Architecture Styles](https://www.linkedin.com/posts/rocky-bhatia-a4801010_activity-7399411247730970625-UDvR) | Rocky Bhatia | `03-production-api` — "All six on one page" |
+
+## Learning resources
+
+`RESOURCES.txt` at the root, and one in each session folder, carry the same links as the
+"Where to learn more" slides — all generated from a single list, so the two cannot drift.
+
+Every link was fetched before it shipped; the YouTube ones were
+checked through the oEmbed endpoint, which fails for a deleted video, and the titles and channel
+names on the slides are the ones it returned.
+
+Arabic coverage is uneven and the slides say so. Docker and machine-learning fundamentals have
+genuinely good Arabic courses. DVC, Feast, Ray and Terraform have effectively none, so those
+slides point at the nearest useful Arabic material and state plainly that no course was found,
+rather than filling the column with something weak.
