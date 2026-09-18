@@ -1,0 +1,7 @@
+numpy==1.23.1
+pandas==1.4.3
+scikit-learn==1.1.1
+matplotlib==3.5.2
+seaborn==0.11.2
+ipykernel==6.15.1
+feature_engine==1.8.1
