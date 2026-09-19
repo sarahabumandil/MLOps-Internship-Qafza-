@@ -1,0 +1,78 @@
+# ---------------------------------------------------------------------------
+# Central configuration for the late-delivery inference service.
+# Every path, every parameter used anywhere in src/ or app/ comes from here
+# (or from environment variables referenced here) — nothing is hardcoded
+# in the modules themselves.
+# ---------------------------------------------------------------------------
+
+project:
+  name: "olist-late-delivery"
+  label_col: "is_late"
+  random_state: 42
+
+# Paths are relative to the repo root. Resolved in src/config.py.
+paths:
+  data_raw: "data/raw"
+  data_interim: "data/interim"
+  data_processed: "data/processed"
+  data_models: "data/models"
+  reports_figures: "reports/figures"
+  prediction_log: "data/monitoring/prediction_log.jsonl"
+
+# Artifacts produced by Notebooks 5 & 6 (Task 2). The inference pipeline
+# LOADS these — it never fits/trains anything.
+artifacts:
+  fitted_transformers: "data/models/fitted_transformers.joblib"
+  feature_list: "data/models/feature_list.json"
+  model: "data/models/model.joblib"
+  results_summary: "data/models/results_summary.json"
+
+# MLflow — the service resolves the model from the registry/tracking server
+# first; the artifacts above are the local fallback for offline/dev use.
+mlflow:
+  tracking_uri: "${MLFLOW_TRACKING_URI:-http://mlflow:5000}"
+  experiment_name: "olist-late-delivery"
+  registered_model_name: "olist-late-delivery-classifier"
+  model_stage: "${MODEL_STAGE:-Production}"
+
+# DVC remote — configured once via `dvc remote add`, referenced here for
+# documentation. Actual remote credentials come from environment variables,
+# never committed.
+dvc:
+  remote_name: "storage"
+  remote_url: "${DVC_REMOTE_URL:-s3://olist-mlops-artifacts/dvc-store}"
+
+# Database (order intake / prediction log storage in docker-compose stack)
+database:
+  url: "${DATABASE_URL:-postgresql+psycopg2://mlops:mlops@db:5432/olist_inference}"
+
+# Great Expectations
+validation:
+  suite_name: "order_intake_suite"
+  ge_root: "great_expectations"
+  on_failure: "reject"   # reject | flag | default — see src/data/validation.py
+
+# Logging
+logging:
+  level: "${LOG_LEVEL:-INFO}"
+  log_dir: "logs"
+  log_file: "service.log"
+  json_format: true
+
+# API
+api:
+  title: "Olist Late Delivery Prediction API"
+  version: "1.0.0"
+  host: "0.0.0.0"
+  port: 8000
+
+# Model inference
+inference:
+  # Threshold chosen on the validation split in Notebook 6 / results_summary.json.
+  # Loaded dynamically at startup; this is only the fallback default.
+  default_threshold: 0.5
+
+# Monitoring
+monitoring:
+  metrics_port: 8000
+  drift_check_min_predictions: 200
