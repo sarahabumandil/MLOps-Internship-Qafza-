@@ -1,0 +1,24 @@
+stages:
+  bootstrap_train:
+    cmd: PYTHONPATH=. python scripts/bootstrap_train.py
+    deps:
+      - scripts/bootstrap_train.py
+      - scripts/make_synthetic_ml_table.py
+      - src/data/preprocessing.py
+      - src/config.py
+      - config/config.yaml
+    outs:
+      - data/interim/ml_table.parquet
+      - data/interim/labeled_table.parquet
+      - data/processed/train.parquet
+      - data/processed/val.parquet
+      - data/processed/test.parquet
+      - data/processed/features_train.parquet
+      - data/processed/features_val.parquet
+      - data/processed/features_test.parquet
+      - data/models/fitted_transformers.joblib
+      - data/models/feature_list.json
+      - data/models/model.joblib
+    metrics:
+      - data/models/results_summary.json:
+          cache: false

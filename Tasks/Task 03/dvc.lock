@@ -1,0 +1,74 @@
+schema: '2.0'
+stages:
+  bootstrap_train:
+    cmd: PYTHONPATH=. python scripts/bootstrap_train.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 3f6068343ab830cf33ae6c52676f6bcb
+      size: 2607
+    - path: scripts/bootstrap_train.py
+      hash: md5
+      md5: c46acb809c7e05082579d0cb66bad0e8
+      size: 13008
+    - path: scripts/make_synthetic_ml_table.py
+      hash: md5
+      md5: aca9025b003a3387c1dc776d6dd8d36d
+      size: 8153
+    - path: src/config.py
+      hash: md5
+      md5: 65e3df317105ed8692042e6fc57afc83
+      size: 6159
+    - path: src/data/preprocessing.py
+      hash: md5
+      md5: a0438b9466b75114267bc7502f8086f7
+      size: 2904
+    outs:
+    - path: data/interim/labeled_table.parquet
+      hash: md5
+      md5: 8837d899dec73690b6a047a959c7f2aa
+      size: 1607384
+    - path: data/interim/ml_table.parquet
+      hash: md5
+      md5: 72b279e8a2a1683df1c90af0274685b5
+      size: 1487329
+    - path: data/models/feature_list.json
+      hash: md5
+      md5: 5d38a45f6347772d4d5b5438556b8c36
+      size: 2314
+    - path: data/models/fitted_transformers.joblib
+      hash: md5
+      md5: 5a30a6a1bfa2a8452b151ec8bb17386e
+      size: 6084
+    - path: data/models/model.joblib
+      hash: md5
+      md5: 07fc700ece0144a0b336e54a56a3050d
+      size: 1365849
+    - path: data/models/results_summary.json
+      hash: md5
+      md5: 07277008d7152b15db246b0fbc20e325
+      size: 541
+    - path: data/processed/features_test.parquet
+      hash: md5
+      md5: 6357671577eb7941a4b70c5306ffc858
+      size: 224930
+    - path: data/processed/features_train.parquet
+      hash: md5
+      md5: 4e6c243d235f3167406f924c9fe4e7fe
+      size: 702565
+    - path: data/processed/features_val.parquet
+      hash: md5
+      md5: 904693cb0309639949ef42a0a993080d
+      size: 224293
+    - path: data/processed/test.parquet
+      hash: md5
+      md5: 0a456b1c6cecee4d84357027dcc83038
+      size: 282147
+    - path: data/processed/train.parquet
+      hash: md5
+      md5: 1c008601a367ac19c05bce54ece21e8b
+      size: 1153226
+    - path: data/processed/val.parquet
+      hash: md5
+      md5: 3233653dd935cae2e6744eb055a491a3
+      size: 281148

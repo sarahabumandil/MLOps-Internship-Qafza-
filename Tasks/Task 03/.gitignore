@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+
+# Env / secrets
+.env
+*.env.local
+
+# Data & model artifacts — versioned via DVC, not git, except .dvc pointer files
+/data/raw/*
+/data/interim/*
+/data/processed/*
+/data/models/*
+!/data/**/.gitkeep
+!/data/**/*.dvc
+
+# MLflow local fallback store
+mlruns/
+mlartifacts/
+mlflow.db
+
+# Logs & monitoring
+logs/
+data/monitoring/*.jsonl
+
+# Reports
+reports/figures/*.png
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Great Expectations local run artifacts
+great_expectations/uncommitted/
