@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["main"]
+
+env:
+  PYTHONPATH: .
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dev requirements
+        run: pip install -r requirements-dev.txt
+      - name: Ruff lint
+        run: ruff check .
+      - name: Black format check
+        run: black --check .
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dev requirements
+        run: pip install -r requirements-dev.txt
+      - name: Bootstrap training artifacts (synthetic data, for CI only)
+        run: python scripts/bootstrap_train.py
+      - name: Run tests
+        run: pytest --cov=src --cov=app --cov-report=xml -q
+        # A failing test here stops the pipeline before build/push ever runs —
+        # that's the whole point of putting build-and-push in a later job
+        # that `needs: test`.
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+
+  build-and-push:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/olist-late-delivery-api:${{ github.sha }}
+            ghcr.io/${{ github.repository }}/olist-late-delivery-api:latest
