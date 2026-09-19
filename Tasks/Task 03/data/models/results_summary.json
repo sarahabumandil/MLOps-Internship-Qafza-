@@ -1,0 +1,17 @@
+{
+  "baseline_stratified_pr_auc_val": 0.22183443214475168,
+  "baseline_logreg_pr_auc_val": 0.25948980628030843,
+  "model": "RandomForestClassifier",
+  "best_params": {
+    "max_depth": 6,
+    "min_samples_leaf": 5,
+    "n_estimators": 200
+  },
+  "chosen_threshold": 0.44678045790238935,
+  "val_pr_auc": 0.26593892224301197,
+  "test_pr_auc": 0.23129299035149603,
+  "test_roc_auc": 0.5336476709803071,
+  "test_f1_late_class": 0.3562666666666667,
+  "train_late_rate": 0.21095238095238095,
+  "mlflow_run_id": "76dc4effb033484991b4d90802823f37"
+}
