@@ -1,4 +1,8 @@
 # MLOps-Internship-Qafza
+
+![Certificate](pic/IMG_20261119_190819.jpg)
+
+
 # End-to-End MLOps Engineering Curriculum
 > **Organization:** Qafza Tech Internship Program  
 > **Author:** Sarah Abumandil  
